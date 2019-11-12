@@ -150,7 +150,6 @@ func (rp *ReceivePack) DoSSH(rw ssh.Channel) ReceivePacker {
 		return rp.withErr(err) // pre-wrapped error
 	}
 	hookData.RepoName = rp.repoName
-	hookData.Repository = rp.repos[rp.repoName]
 
 	// the git pre-receive-hook function
 	if rp.preReceiveHookFn != nil {

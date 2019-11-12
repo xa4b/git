@@ -2,8 +2,6 @@ package cfg
 
 import (
 	"io"
-
-	"gopkg.in/src-d/go-git.v4"
 )
 
 // ReceivePackData holds the receive-pack data that's sent to the 'pre' and 'post' receive-pack hooks
@@ -11,9 +9,8 @@ type ReceivePackData struct{ OldHash, NewHash, RefName string }
 
 // ReceivePackHookData holds all of the data needed to interact with the receive-pack hooks. This data cannot be changed, it is read-only.
 type ReceivePackHookData struct {
-	RepoName   string
-	Repository *git.Repository
-	Refs       []ReceivePackData
+	RepoName string
+	Refs     []ReceivePackData
 }
 
 // PreReceivePackHookData is a wrapper around the ReceivePackHookData for the pre-receive-pack hook.
@@ -44,3 +41,6 @@ type PreReceivePackHookFunc func(io.Writer, *PreReceivePackHookData) (string, *R
 
 // PostReceivePackHookFunc a type describing the post-receive-pack hook callback
 type PostReceivePackHookFunc func(io.Writer, *PostReceivePackHookData)
+
+// ctxStr wraps a context string
+type ctxStr string

@@ -177,9 +177,6 @@ type ReceivePack struct {
 	rReq  *packp.ReferenceUpdateRequest
 	rStat *packp.ReportStatus
 
-	// preHookFn  cfg.PreReceivePackHookFunc
-	// postHookFn cfg.PostReceivePackHookFunc
-
 	logPrefix string
 	err       error
 }
@@ -190,8 +187,6 @@ func (s *GoGitServer) NewReceivePack(repoName string) ReceivePacker {
 		GoGitServer: s,
 		repoName:    repoName,
 		logPrefix:   "receive-pack [HTTP]:",
-		// preHookFn:   s.preReceiveHookFn,
-		// postHookFn:  s.postReceiveHookfn,
 	}
 }
 
@@ -238,7 +233,6 @@ func (rp *ReceivePack) DoHTTP(w http.ResponseWriter, r *http.Request) ReceivePac
 		return rp.withErr(err) // is a pre-wrapped error
 	}
 	hookData.RepoName = rp.repoName
-	hookData.Repository = rp.repos[rp.repoName]
 
 	rp.log.Info("adding the pre-receive hook...")
 	// the git pre-receive-hook function

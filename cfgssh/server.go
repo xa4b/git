@@ -68,7 +68,6 @@ func (s *Server) ServeSSH(chans <-chan ssh.NewChannel, reqs <-chan *ssh.Request,
 		}
 		defer conn.Close()
 
-		// go func(in <-chan *ssh.Request) {
 		for req := range reqs {
 			if t := req.Type; t != "exec" {
 				s.log.Debugf("unknown request type: %s", t)
@@ -91,12 +90,12 @@ func (s *Server) ServeSSH(chans <-chan ssh.NewChannel, reqs <-chan *ssh.Request,
 
 			if handler, ok := mux.Handlers[cmd[0]]; ok {
 				handler(repoName, conn)
-
 				return
 			}
 
 			if mux.NotFoundHandler != nil {
 				mux.NotFoundHandler(repoName, conn)
+				return
 			}
 
 			s.log.Info(s.logPrefix, "'exec' handler [%s] for %s was not found\r\n", cmd[0], repoName)
@@ -105,7 +104,6 @@ func (s *Server) ServeSSH(chans <-chan ssh.NewChannel, reqs <-chan *ssh.Request,
 		}
 
 		fmt.Fprint(conn, "request type 'exec' was not found\r\n")
-		// }(reqs)
 	}
 }
 
