@@ -1,4 +1,4 @@
-package cfgssh
+package cfgssh /* import "gopkg.xa4b.com/git/cfgssh" */
 
 import (
 	"fmt"

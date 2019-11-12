@@ -1,4 +1,4 @@
-package pktline
+package pktline /* import "gopkg.xa4b.com/git/pktline" */
 
 import (
 	"fmt"

@@ -1,4 +1,4 @@
-package cfg
+package cfg /* import "gopkg.xa4b.com/git/cfg" */
 
 import (
 	"io"
@@ -41,6 +41,3 @@ type PreReceivePackHookFunc func(io.Writer, *PreReceivePackHookData) (string, *R
 
 // PostReceivePackHookFunc a type describing the post-receive-pack hook callback
 type PostReceivePackHookFunc func(io.Writer, *PostReceivePackHookData)
-
-// ctxStr wraps a context string
-type ctxStr string

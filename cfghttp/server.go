@@ -1,4 +1,4 @@
-package cfghttp
+package cfghttp /* import "gopkg.xa4b.com/git/cfghttp" */
 
 import (
 	"fmt"
