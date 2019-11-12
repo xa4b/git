@@ -1,18 +1,28 @@
-# The GitConfater
+# Go RemDVC
 
  [![GoDoc][doc-img]][doc]
 
-Save internal configuration for your application in git using go. Allowing your clients to save their configuration in a local git version control library. We have libraries for easy integration to HTTP and SSH servers.
+*Remote Embedded Distributed Version Control...* say what?
+
+Save internal configuration for your application in git using go. Allowing your clients to save their configuration in a local git version control library. We have libaries for easy interagtion to HTTP and SSH servers.
+
+## What does this library do
+
+It provides built-in HTTP and SSH handlers for running an embeded git server that provides pre-receive and post-receive hooks within your application. One reason you may want to do this is to provide a way for users to use git to push config changes to your application, which is exactly what we do for XA4B (http://xa4b.com). We use this library and the post-receive hook to publish the configuration to other connected remote instances. Using Git as the method in which to manage confiuration throughout a distrubted system without a single source database.
 
 ## Installation
 
-`go get -u gopkg.xa4b.com/git`
-
 Go 1.13 or later is required
+
+`go get -u gopkg.xa4b.com/git/cfghttp`
+
+or
+
+`go get -u gopkg.xa4b.com/git/cfgssh`
 
 ## Quick Start
 
-Using the `githttp` library to quickly add a git configuration.
+Using the `cfghttp` library to quickly add a git configuration.
 
 ```go
 // ...
@@ -74,15 +84,15 @@ func main() {
 
 ## Development Status: Alpha
 
-There are no plans to drastically change the API, but we are leaving the library in *Alpha* status until there has been more usage.
+There are no plans to drasticly change the API, but we are leaving the libray in *Alpha* status until there has been more usage.
 
 ## Contributing
 
 We support an active community of contributors &mdash; and yeah that includes you! 
-Feel free to fork and submit pull requests for any updates or improvements. We are
+Feel free to fork and submit pull requests for any updates or impovements. We are
 gathering information for Community and Contribution guidelines. As of now please
-maintain the golden rule while participating in this project; which is most
-familiarly: *“Do unto others as you would have them do unto you.”
+mantain the golden rule while interating with this project; which is most
+familarly: *“Do unto others as you would have them do unto you.”
 
 <hr>
 
